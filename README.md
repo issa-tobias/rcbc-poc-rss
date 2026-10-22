@@ -9,7 +9,7 @@ ingestion by Meltwater.
 
 | | |
 |---|---|
-| items | 1,599 |
+| items | 1,592 |
 | platform | Facebook (posts) |
 | date range | 2018-11-01 → 2026-10-20 |
 | languages | Tagalog / Taglish and English |
@@ -26,7 +26,10 @@ Scope — the RCBC conversation, drawn from four scrape requesters that barely o
   Buddies PH, Tipid Hacks, and the digital-bank complaint groups
 
 Posts from those adjacent communities that never mention RCBC or one of its
-sub-brands are excluded, as is anything without a permalink.
+sub-brands are excluded, as is anything without a permalink. "Payday" and
+"kapitbahay" are treated as RCBC terms only next to a qualifier or inside an RCBC
+account, so Shopee "payday sale" posts and ordinary uses of *kapitbahay*
+("neighbour") stay out.
 
 ## Schema
 
@@ -41,7 +44,7 @@ item:    title, link, description, pubDate, source(url=…), [reach], guid, auth
 - `title` repeats `description` verbatim — the full post text, untruncated.
 - `guid` is `messy_fb_<facebook_post_id>`, stable across rebuilds.
 - `source` carries the permalink as its `url` attribute and `Facebook` as its text.
-- `reach` is the post's comment count, omitted when zero (1,281 of 1,599 items
+- `reach` is the post's comment count, omitted when zero (1,278 of 1,592 items
   carry it).
 - `country` is omitted, as it is on the upstream Facebook feeds.
 
