@@ -9,15 +9,24 @@ ingestion by Meltwater.
 
 | | |
 |---|---|
-| items | 788 |
+| items | 1,599 |
 | platform | Facebook (posts) |
 | date range | 2018-11-01 → 2026-10-20 |
 | languages | Tagalog / Taglish and English |
-| scope | the RCBC conversation — the six accounts named in the POC brief (RCBC PULZ GROUP, RCBC Hexagon Club • RCBC Credit Cards (Bankard), RCBC COMPLAINTS GROUP, RCBC ATM GO, PH Digital Banks, KasKasan Buddies), the wider RCBC ecosystem (the DiskarTech group, the RCBC / RCBC Credit / DiskarTech pages, SSS and card communities), and RCBC-mentioning posts found in neighbouring PH banking groups |
 | every item has | a working Facebook permalink |
 
-Competitor-group chatter that never mentions RCBC is excluded, as are items with no
-permalink.
+Scope — the RCBC conversation, drawn from four scrape requesters that barely overlap:
+
+- **the six accounts named in the POC brief** — RCBC PULZ GROUP, RCBC Hexagon Club •
+  RCBC Credit Cards (Bankard), RCBC COMPLAINTS GROUP, RCBC ATM GO, PH Digital Banks,
+  KasKasan Buddies (1,058 posts)
+- **the wider RCBC ecosystem** — the DiskarTech group, the RCBC / RCBC Credit /
+  DiskarTech owned pages, RCBC Hexagon Buddies, RCBC Credit Card PH
+- **RCBC-mentioning posts from adjacent PH communities** — SSS groups, Credit Card
+  Buddies PH, Tipid Hacks, and the digital-bank complaint groups
+
+Posts from those adjacent communities that never mention RCBC or one of its
+sub-brands are excluded, as is anything without a permalink.
 
 ## Schema
 
@@ -32,7 +41,8 @@ item:    title, link, description, pubDate, source(url=…), [reach], guid, auth
 - `title` repeats `description` verbatim — the full post text, untruncated.
 - `guid` is `messy_fb_<facebook_post_id>`, stable across rebuilds.
 - `source` carries the permalink as its `url` attribute and `Facebook` as its text.
-- `reach` is the post's comment count, omitted when zero (703 of 788 items carry it).
+- `reach` is the post's comment count, omitted when zero (1,281 of 1,599 items
+  carry it).
 - `country` is omitted, as it is on the upstream Facebook feeds.
 
 ## Regenerating
